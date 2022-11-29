@@ -1,8 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using WebApp;
 
+string? dbName, password;
+Console.WriteLine("Podaj nazwę bazy danych:");
+dbName = Console.ReadLine();
+
+Console.WriteLine("Podaj hasło bazy danych:");
+password = Console.ReadLine();
+
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("SqlConnection") ?? throw new InvalidOperationException("Connection string 'SqlConnection' not found.");
+var connectionString = $"Server=192.168.1.9,1433;Database={dbName};User Id=sa;Password={password}; encrypt=false";
+//var connectionString = builder.Configuration.GetConnectionString("SqlConnection") ?? throw new InvalidOperationException("Connection string 'SqlConnection' not found.");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
