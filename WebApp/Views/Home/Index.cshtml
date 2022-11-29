@@ -1,0 +1,27 @@
+﻿@model System.Collections.Generic.List<StudentModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <table class="table table-bordered table-striped table-sm mb-1 align-middle">
+        <thead>
+            <tr class="text-nowrap" style="color:steelblue; font-size:large">
+                <th>Id</th>
+                <th>Imię, Nazwisko studenta</th>
+                <th>Index</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (StudentModel student in Model)
+            {
+                <tr style="font-size:large">
+                    <td>@student.Id</td>
+                    <td>@student.Name</td>
+                    <td>@student.Index</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
